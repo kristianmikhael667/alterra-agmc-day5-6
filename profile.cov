@@ -1,0 +1,27 @@
+mode: set
+main/controllers/userController.go:13.47,16.16 2 1
+main/controllers/userController.go:19.2,22.4 1 1
+main/controllers/userController.go:16.16,18.3 1 0
+main/controllers/userController.go:25.52,30.16 3 0
+main/controllers/userController.go:33.2,36.4 1 0
+main/controllers/userController.go:30.16,32.3 1 0
+main/controllers/userController.go:39.49,43.21 3 1
+main/controllers/userController.go:43.21,48.3 1 1
+main/controllers/userController.go:48.8,48.29 1 0
+main/controllers/userController.go:48.29,52.3 1 0
+main/controllers/userController.go:52.8,52.32 1 0
+main/controllers/userController.go:52.32,56.3 1 0
+main/controllers/userController.go:56.8,59.17 2 0
+main/controllers/userController.go:62.3,65.5 1 0
+main/controllers/userController.go:59.17,61.4 1 0
+main/controllers/userController.go:70.47,77.16 5 0
+main/controllers/userController.go:81.2,84.4 1 0
+main/controllers/userController.go:77.16,80.3 1 0
+main/controllers/userController.go:87.49,91.16 3 0
+main/controllers/userController.go:95.2,98.4 1 0
+main/controllers/userController.go:91.16,94.3 1 0
+main/controllers/userController.go:101.48,108.14 5 0
+main/controllers/userController.go:112.2,112.14 1 0
+main/controllers/userController.go:116.2,120.4 1 0
+main/controllers/userController.go:108.14,110.3 1 0
+main/controllers/userController.go:112.14,114.3 1 0
