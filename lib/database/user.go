@@ -41,7 +41,7 @@ func DeleteUser(id string) (interface{}, error) {
 	return users, nil
 }
 
-func EditUser(id string, name string, email string, password string) (interface{}, error) {
+func EditUser(id string, biod *models.User) (interface{}, error) {
 
 	// var users []User
 	var user []models.User
@@ -50,7 +50,7 @@ func EditUser(id string, name string, email string, password string) (interface{
 		return nil, err
 	}
 
-	if err := config.DB.Model(&user).Where("id = ?", id).Updates(models.User{Name: name, Email: email, Password: password}).Error; err != nil {
+	if err := config.DB.Model(&user).Where("id = ?", id).Updates(models.User{Name: biod.Name, Email: biod.Email, Password: biod.Password}).Error; err != nil {
 		return nil, err
 	}
 
