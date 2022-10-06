@@ -2,7 +2,6 @@ package database
 
 import (
 	"main/pkg/util"
-	"os"
 	"sync"
 
 	"gorm.io/gorm"
@@ -14,18 +13,12 @@ var (
 )
 
 func CreateConnection() {
-	dbusername := os.Getenv("DB_USERNAME")
-	dbpass := os.Getenv("DB_PASSWORD")
-	dbport := os.Getenv("DB_PORT")
-	dbhost := os.Getenv("DB_HOST")
-	dbname := os.Getenv("DB_NAME")
 
 	conf := DBConfig{
-		DBUser: util.GetEnv("DB_USERNAME", dbusername),
-		DBPass: util.GetEnv("DB_PASSWORD", dbpass),
-		DBHost: util.GetEnv("DB_PASSWORD", dbport),
-		DBPort: util.GetEnv("DB_PASSWORD", dbhost),
-		DBName: util.GetEnv("DB_PASSWORD", dbname),
+		DBUser: util.GetEnv("DB_USER", "root"),
+		DBHost: util.GetEnv("DB_HOST", "127.0.0.1"),
+		DBPort: util.GetEnv("DB_PORT", "3306"),
+		DBName: util.GetEnv("DB_NAME", "alterramvc"),
 	}
 
 	mysql := mysqlConfig{

@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"main/internal/dto"
 	"main/internal/models"
 	pkgdto "main/pkg/dto"
 	"strings"
@@ -12,6 +13,8 @@ import (
 type Users interface {
 	FindAll(ctx context.Context, payload *pkgdto.SearchGetRequest, p *pkgdto.Pagination) ([]models.User, *pkgdto.PaginationInfo, error)
 	FindByEmail(ctx context.Context, email *string) (*models.User, error)
+	ExistByEmail(ctx context.Context, email *string) (bool, error)
+	Save(ctx context.Context, users *dto.RegisterUserRequestBody) (models.User, error)
 }
 
 type users struct {
@@ -54,4 +57,32 @@ func (r *users) FindByEmail(ctx context.Context, email *string) (*models.User, e
 		return nil, err
 	}
 	return &data, nil
+}
+
+func (r *users) ExistByEmail(ctx context.Context, email *string) (bool, error) {
+	var (
+		count   int64
+		isExist bool
+	)
+	if err := r.Db.WithContext(ctx).Model(&models.User{}).Where("email = ?", email).Count(&count).Error; err != nil {
+		return isExist, err
+	}
+	if count > 0 {
+		isExist = true
+	}
+	return isExist, nil
+}
+
+func (r *users) Save(ctx context.Context, employee *dto.RegisterUserRequestBody) (models.User, error) {
+	newUsers := models.User{
+		Fullname:   employee.Fullname,
+		Email:      employee.Email,
+		Password:   employee.Password,
+		RoleID:     *employee.RoleID,
+		DivisionID: *employee.DivisionID,
+	}
+	if err := r.Db.WithContext(ctx).Save(&newUsers).Error; err != nil {
+		return newUsers, err
+	}
+	return newUsers, nil
 }

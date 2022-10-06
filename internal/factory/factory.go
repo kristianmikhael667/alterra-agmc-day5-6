@@ -2,7 +2,7 @@ package factory
 
 import (
 	"main/database"
-	"main/repository"
+	"main/internal/repository"
 )
 
 type Factory struct {

@@ -1,6 +1,8 @@
 package dto
 
-import "math"
+import (
+	"math"
+)
 
 type Pagination struct {
 	Page     *int `query:"page" json:"page"`
@@ -21,10 +23,10 @@ type SearchGetRequest struct {
 	DscField []string `query:"dsc_field"`
 }
 
-// type SearchGetResponse[T any] struct{
-// 	Data []T `json:"data"`
-// 	PaginationInfo PaginationInfo
-// }
+type SearchGetResponse[T any] struct {
+	Data           []T `json:"data"`
+	PaginationInfo PaginationInfo
+}
 
 func GetLimitOffset(p *Pagination) (limit, offset int) {
 	if p.PageSize != nil {

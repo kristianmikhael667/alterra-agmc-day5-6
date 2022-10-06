@@ -22,9 +22,9 @@ type (
 )
 
 func (conf mysqlConfig) Connect() {
-	dns := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
+
+	dsn := fmt.Sprintf("%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		conf.DBUser,
-		conf.DBPass,
 		conf.DBHost,
 		conf.DBPort,
 		conf.DBName,
@@ -32,7 +32,7 @@ func (conf mysqlConfig) Connect() {
 
 	var err error
 
-	dbConn, err = gorm.Open(mysql.Open(dns), &gorm.Config{})
+	dbConn, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
